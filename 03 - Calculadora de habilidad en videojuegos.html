@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de habilidad en videojuegos</title>
+    <link rel="icon" href="imagenes/calculadora.ico" type="image/x-icon">
+    <link rel="stylesheet" href="estilos.css">
+    <script type="text/javascript">
+
+        var notasFinales=0;
+        var contador=0;
+
+        function calcula() {
+            var juego = document.getElementById('cajaNombre').value.toLowerCase();
+            var nota = parseFloat(document.getElementById('cajaNota').value);
+            notasFinales = notasFinales + nota;
+            contador++;
+            var promedio = (notasFinales/contador).toFixed(2);
+
+            switch (juego) {
+                case 'call of duty mw2':
+                    document.getElementById('cod').style.display = 'table-row';
+                    document.getElementById('notaMW2').innerHTML = nota;
+                    break;
+                case 'league of legends':
+                    document.getElementById('lol').style.display = 'table-row';
+                    document.getElementById('notaLol').innerHTML = nota;
+                    break;
+                case 'fortnite':
+                    document.getElementById('fortnite').style.display = 'table-row';
+                    document.getElementById('notaFortnite').innerHTML = nota;
+                    break;
+                case 'resident evil 2':
+                    document.getElementById('re2').style.display = 'table-row';
+                    document.getElementById('notaRE2').innerHTML = nota;
+                    break;
+            }
+
+            if (promedio<=33){
+                document.getElementById('descripcionPromedio').innerHTML='Un jugador malo de videojuegos es aquel que, con su falta de concentración y estrategia, convierte cada partida en un verdadero desafío para su equipo.';
+            } else if (promedio<=66){
+                document.getElementById('descripcionPromedio').innerHTML='Un jugador de habilidad media es aquel que, si bien entiende las mecánicas básicas del juego, ocasionalmente olvida que la granada que acaba de lanzar no es suya.';
+            } else {
+                document.getElementById('descripcionPromedio').innerHTML='Un jugador excelente en videojuegos hace que las partidas parezcan más una obra de arte que una batalla.'
+            }
+
+            document.getElementById('promedio').style.display = 'table-row';
+            document.getElementById('notaFinal').innerHTML = promedio;
+
+            document.getElementById('cajaNombre').value = '';
+            document.getElementById('cajaNota').value = '';
+        }
+
+    </script>
+</head>
+<body>
+    <div class="titulo">
+        <h1>CALCULADORA GAMER</h1>
+    </div> 
+    <div class="subtitulo">
+        <h2>Lista de juegos</h2>
+    </div>
+    <div id="descripcion" class="contenedorGeneral">        
+                <div class="juego">
+                    <img src="imagenes/mw2.jpg">
+                    <div id="codTexto">Call of Duty MW2</div>
+                </div>
+                <div class="juego">
+                    <img src="imagenes/lol.jpg">
+                    <div id="lolTexto">League of legends</div>
+                </div>
+                <div class="juego">
+                    <img src="imagenes/fortnite.jpg">
+                    <div id="fortniteTexto">Fortnite</div>
+                </div>
+                <div class="juego">
+                    <img src="imagenes/re2.jpg">
+                    <div id="re2Texto">Resident Evil 2</div>
+                </div>
+    </div>
+    <div id="formulario" class="contenedorNota">
+        <input type="text" value="Nombre del juego" id="cajaNombre"><br>
+        <input type="text" value="Puntuación" id="cajaNota"><br>
+        <input type="button" value="Calcula" onclick="calcula();">
+    </div>
+    
+    <table border="1" cellspacing="0" cellpadding="5">
+
+        <tr id="cod" style="display: none;">
+            <td><div id="imagenMW2"><img src="imagenes/mw2.jpg"></div></td>
+            <td><div id="descripcionMW2">Call of Duty: Modern Warfare 2 (MW2) es un videojuego de disparos en primera persona, desarrollado por Infinity Ward y lanzado en 2009. Es conocido por su intensa campaña narrativa y su innovador modo multijugador. Los jugadores siguen la historia del Task Force 141 en una misión global para detener a un ultranacionalista ruso.</div></td>
+            <td><div id="notaMW2"></div></td>
+        </tr>
+
+        <tr id="lol" style="display: none;">
+            <td><img src="imagenes/lol.jpg"></td>
+            <td><div id="descripcionLol">League of Legends (LoL) es un videojuego de estrategia y acción en tiempo real, desarrollado por Riot Games. Lanzado en 2009, es conocido por su competitivo modo de juego multijugador en el que equipos de campeones luchan para destruir la base del enemigo.</div></td>
+            <td><div id="notaLol"></div></td>
+        </tr>
+
+        <tr id="fortnite" style="display: none;">
+            <td><img src="imagenes/fortnite.jpg"></td>
+            <td><div id="descripcionFortnite">Fortnite es un popular videojuego de supervivencia y construcción desarrollado por Epic Games. Lanzado en 2017, se distingue por su modo Battle Royale, donde 100 jugadores compiten hasta que solo quede uno.</div></td>
+            <td><div id="notaFortnite"></div></td>
+        </tr>
+
+        <tr id="re2" style="display: none;">
+            <td><img src="imagenes/re2.jpg"></td>
+            <td><div id="descripcionRe2">Resident Evil 2 Remake es una versión moderna del clásico juego de terror y supervivencia de 1998, desarrollado por Capcom. Lanzado en 2019, el remake presenta gráficos mejorados, una jugabilidad actualizada y una perspectiva en tercera persona. Los jugadores controlan a Leon S. Kennedy y Claire Redfield mientras intentan sobrevivir a un brote de zombis en Raccoon City.</div></td>
+            <td><div id="notaRE2"></div></td>
+        </tr>
+
+        <tr id="promedio" style="display: none;">
+            <td><img src="imagenes/usuario.png"></td>
+            <td><div id="descripcionPromedio"></div></td>
+            <td><div id="notaFinal"></div></td>
+        </tr>
+        
+    </table>
+    
+</body>
+</html>
